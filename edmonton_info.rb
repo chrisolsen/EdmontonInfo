@@ -5,7 +5,15 @@ configure :development do
   DataMapper::Logger.new(STDOUT, :debug)
 end
 
+configure :production do 
+  disable :run, :reload
+end
+
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/config/edmonton.db")
+
+get "/" do
+  halt 404, "Invalid Path"
+end
 
 get "/parks" do
   Park.all.to_json

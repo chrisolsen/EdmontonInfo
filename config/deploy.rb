@@ -1,12 +1,12 @@
 set :domain, "edmontononrails.com"
-set :application, "edmontoninfo"
+set :application, "EdmontonInfo"
 set :deploy_to, "/var/www/apps/edmontoninfo"
 
 set :user, "chris"
 set :use_sudo, false
 
 set :scm, :git
-set :repository,  "git@github.com:chrisolsen/edmontoninfo"
+set :repository,  "git@github.com:chrisolsen/EdmontonInfo"
 set :branch, 'master'
 set :git_shallow_clone, 1
 
