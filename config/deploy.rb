@@ -41,4 +41,5 @@ namespace :deploy do
       run "find #{asset_paths} -exec touch -t #{stamp} {} ';'; true", :env => { "TZ" => "UTC" }
     end
   end
+
 end

@@ -21,7 +21,7 @@ class School
   property :grade_level,  String
   property :programs,     String
 
-  property :school_type, Enum[:catholic, :public, :separate]
+  property :school_type, Enum[:catholic, :other]
 end
 
 module SchoolData 
@@ -62,7 +62,7 @@ module SchoolData
           end
 
           School.create(attr_params.merge(
-            "school_type"  => index == 0 ? "catholic" : "other",
+            "school_type" => index == 0 ? "catholic" : "other",
             "timestamp" => property.get_elements("d:Timestamp").first.text
           ))
         rescue
