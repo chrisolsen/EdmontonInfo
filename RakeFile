@@ -8,6 +8,7 @@ namespace :db do
   desc "Import data from the Edmonton site"
   task(:migrate => :environment) do
     puts "Creating Database..."
+
     DataMapper.auto_migrate!
 
     puts "Importing Park Data..."
