@@ -32,7 +32,7 @@ get "/libraries" do
 end
 
 get "/fire_stations" do
-  FireStation.all.to_json
+  FireStation.all(:name.not("")).to_json
 end
 
 get "/police_stations" do

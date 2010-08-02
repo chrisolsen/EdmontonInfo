@@ -71,12 +71,13 @@ module FireStationData
     FireStation.first(:name => "18").update(:number => "18", :name => "Clareview")
     FireStation.first(:name => "19").update(:number => "19", :name => "Callingwood")
     FireStation.first(:name => "20").update(:number => "20", :name => "Kaskitayo")
-    FireStation.first(:name => "21").update(:number => "21", :name => "")
     FireStation.first(:name => "22").update(:number => "22", :name => "Oliver")
     FireStation.first(:name => "23").update(:number => "23", :name => "Morin")
     FireStation.first(:name => "24").update(:number => "24", :name => "Terwillegar")
     FireStation.first(:name => "25").update(:number => "25", :name => "Lake District")
     FireStation.first(:name => "26").update(:number => "26", :name => "Meadows")
+    
+    FireStation.first(:name => "21").delete
   end
   
 end
