@@ -35,6 +35,17 @@ namespace :db do
     puts "Importing City Event Data..."
     CityEventData.import
   end
+  
+  desc "Fix School Data"
+  task(:fix_schools => :environment) do
+    School.all.each do |school|
+      matches = school.school_name.match(/(.*)\(Opening 2010\)/)
+      unless matches.nil?
+        school.update( :school_name => matches[1] ) 
+        puts "Fixed #{school.school_name}"
+      end
+    end
+  end
 
   namespace :sync do
     desc "Sync Edmonton Events"
