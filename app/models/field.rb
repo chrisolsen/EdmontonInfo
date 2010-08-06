@@ -41,13 +41,18 @@ class Field
       end
     end # end of doc
 
-    # update db if the field status has been updated
-    latest_field_status = Field.first(:order => :id.desc)
-    if latest_field_status.nil? || fields.first.timestamp != latest_field_status.timestamp 
-      fields.each do |field|
-        field.save
-      end
+    Field.destroy
+    fields.each do |field|
+      field.save
     end
+    
+    # # update db if the field status has been updated
+    #     latest_field_status = Field.first(:order => :id.desc)
+    #     if latest_field_status.nil? || fields.first.timestamp != latest_field_status.timestamp 
+    #       fields.each do |field|
+    #         field.save
+    #       end
+    #     end
 
   end # sync 
 
