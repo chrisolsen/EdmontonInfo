@@ -1,5 +1,7 @@
 require "nokogiri"
 require "open-uri"
+require "tzinfo"
+require "time"
 
 class Field 
   include DataMapper::Resource
@@ -34,7 +36,8 @@ class Field
             if cell_index == 0
               field_name = cell.text.strip
             elsif cell_index == 1
-              fields << Field.new(:name => field_name, :state => cell.text.strip, :timestamp => timestamp)
+              yeg_time = TZInfo::Timezone.get('America/Edmonton').now
+              fields << Field.new(:name => field_name, :state => cell.text.strip, :timestamp => timestamp, :created_at => yeg_time)
             end
           end
         end
@@ -46,14 +49,6 @@ class Field
       field.save
     end
     
-    # # update db if the field status has been updated
-    #     latest_field_status = Field.first(:order => :id.desc)
-    #     if latest_field_status.nil? || fields.first.timestamp != latest_field_status.timestamp 
-    #       fields.each do |field|
-    #         field.save
-    #       end
-    #     end
-
   end # sync 
 
   def self.current_status
