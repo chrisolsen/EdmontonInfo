@@ -1,5 +1,6 @@
 require 'net/http'
 require "ri_cal"
+require "dm-timestamps"
 
 class CityEvent 
   include DataMapper::Resource
@@ -11,6 +12,8 @@ class CityEvent
   property :starts_at,    DateTime
   property :ends_at,      DateTime
 
+  property :created_at,   DateTime
+  property :updated_at,   DateTime
 end
 
 module CityEventData 
