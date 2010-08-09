@@ -56,7 +56,3 @@ end
 get "/fields" do
   Field.current_status.to_json
 end
-
-get "/test" do
-  "<html><body>foobar</body></html>"
-end
