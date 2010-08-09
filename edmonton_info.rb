@@ -12,7 +12,7 @@ end
 DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/config/edmonton.db")
 
 get "/" do
-  halt 404, "Invalid Path"
+  "EdmontonInfoApp.com"
 end
 
 get "/parks" do
@@ -45,6 +45,12 @@ end
 
 get "/city_events" do
   CityEvent.all.to_json
+end
+
+get "/city_events/sync/:date" do
+  date = DateTime.parse( params[:date] )
+  events = CityEvent.all( :updated_at.gt => date )
+  events.nil? ? "" : events.to_json
 end
 
 get "/fields" do
