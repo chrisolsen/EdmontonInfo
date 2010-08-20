@@ -43,7 +43,7 @@ module CityEventData
         else
           # update the start or end date
           existing_event.ends_at = ends_at if existing_event.ends_at < ends_at
-          existing_event.starts_at = starts_on if existing_event.starts_at > starts_at
+          existing_event.starts_at = starts_at if existing_event.starts_at > starts_at
           existing_event.save
         end
       end
